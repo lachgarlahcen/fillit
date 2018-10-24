@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 08:40:52 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/10/24 09:42:23 by yez-zain         ###   ########.fr       */
+/*   Updated: 2018/10/24 21:20:44 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define MAX_FILE 4864
 # include <unistd.h>
 # include <stdlib.h>
-# include "../libft.h"
+# include "../libft/libft.h"
 
 char	*ft_realloc(char **str, int old_size, int new_size);
 

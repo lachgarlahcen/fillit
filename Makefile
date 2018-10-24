@@ -6,13 +6,13 @@
 #    By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/10 17:28:20 by yez-zain          #+#    #+#              #
-#    Updated: 2018/10/24 09:57:49 by yez-zain         ###   ########.fr        #
+#    Updated: 2018/10/24 21:28:07 by yez-zain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC = *.c
+SRC = *.c GNL/get_next_line.c
 OBJ = *.o
 LIB = libft/libft.a
 FLAGS = -Wall -Wextra -Werror
