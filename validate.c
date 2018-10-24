@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:46:44 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/10/24 22:42:33 by yez-zain         ###   ########.fr       */
+/*   Updated: 2018/10/24 23:10:03 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,15 @@ t_tetris	*ft_read_all(const int fd)
 	t_tetris	*list;
 	t_tetris	*elem;
 	int			ret;
+	char		c;
 
-	elem = ft_memalloc(sizeof(t_tetris));
+	c = 'A';
+	if (!(elem = ft_memalloc(sizeof(t_tetris))))
+		return (NULL);
 	list = elem;
 	while ((ret = ft_read_tetris(fd, elem)) >= 0)
 	{
+		elem->letter = c++;
 		if (ret == 0)
 			return (list);
 		elem->next = ft_memalloc(sizeof(t_tetris));
