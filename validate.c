@@ -6,13 +6,13 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:46:44 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/10/24 21:06:17 by yez-zain         ###   ########.fr       */
+/*   Updated: 2018/10/24 22:42:33 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_load_tetris(char **line, t_list *tetris)
+void		ft_load_tetris(char **line, t_tetris *tetris)
 {
 	int	i;
 	int	j;
@@ -31,10 +31,11 @@ void	ft_load_tetris(char **line, t_list *tetris)
 	}
 }
 
-int		ft_nb_bloc(char** line, int i, int j)
+int			ft_nb_bloc(char** line, int i, int j)
 {
 	int nb;
 
+	nb = 0;
 	if (i - 1 >= 0)
 		if (line[i - 1][j] == '#')
 			nb++;
@@ -43,14 +44,14 @@ int		ft_nb_bloc(char** line, int i, int j)
 			nb++;
 	if (i + 1 <= 3)
 		if (line[i + 1][j] == '#')
-			n++;
+			nb++;
 	if (j + 1 <= 3)
 		if (line[i][j + 1] == '#')
 			nb++;
 	return (nb);
 }
 
-int		ft_is_valide(char **line)
+int			ft_is_valide(char **line)
 {
 	int	nb_empty;
 	int	nb_blocs;
@@ -79,30 +80,49 @@ int		ft_is_valide(char **line)
 	return (1);
 }
 
-int		ft_read_tetris(const int fd, t_tetris *tetris)
+int			ft_read_tetris(const int fd, t_tetris *tetris)
 {
 	int		i;
 	char	*line[5];
+	int		ret;
 
-	if (get_next_line(fd, &line[0]) == 0)
-		return (-1);
-	if (ft_strlen(line[0]) != 4)
+	if (get_next_line(fd, &line[0]) == 0 || ft_strlen(line[0]) != 4)
 		return (-1);
 	i = 0;
-	while (i < 3)
+	while (++i < 4)
 	{
 		if(get_next_line(fd, &line[i]) == 0 || ft_strlen(line[i]) != 4)
 			return (-1);
-		i++;
 	}
-	if (get_next_line(fd, &line[4]) == 0 || ft_strlen(line[4]) == 0)
+	if ((ret = get_next_line(fd, &line[4])) == 0 || ft_strlen(line[4]) == 0)
 	{
 		if (ft_is_valide(line))
 			ft_load_tetris(line, tetris);
 		else
 			return (-1);
-		return (1);
+		if (ret == 1 && ft_strlen(line[4]) == 0)
+			return (1);
+		else
+			return (0);
 	}
 	else
 		return (-1);
+}
+
+t_tetris	*ft_read_all(const int fd)
+{
+	t_tetris	*list;
+	t_tetris	*elem;
+	int			ret;
+
+	elem = ft_memalloc(sizeof(t_tetris));
+	list = elem;
+	while ((ret = ft_read_tetris(fd, elem)) >= 0)
+	{
+		if (ret == 0)
+			return (list);
+		elem->next = ft_memalloc(sizeof(t_tetris));
+		elem = elem->next;
+	}
+	return (NULL);
 }
