@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:46:44 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/10/24 19:03:33 by yez-zain         ###   ########.fr       */
+/*   Updated: 2018/10/24 21:06:17 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,21 @@
 
 void	ft_load_tetris(char **line, t_list *tetris)
 {
+	int	i;
+	int	j;
 
+	i = 0;
+	j = 0;
+	while (i < 16)
+	{
+		if (line[i / 4][i % 4] == '#')
+		{
+			tetris->point[j].x = i / 4;
+			tetris->point[j].y = i % 4;
+			j++;
+		}
+		i++;
+	}
 }
 
 int		ft_nb_bloc(char** line, int i, int j)
