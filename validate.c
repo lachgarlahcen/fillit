@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:46:44 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/10/24 23:10:03 by yez-zain         ###   ########.fr       */
+/*   Updated: 2018/10/28 09:12:51 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void		ft_load_tetris(char **line, t_tetris *tetris)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	t_point	p;
 
 	i = 0;
 	j = 0;
@@ -28,6 +29,14 @@ void		ft_load_tetris(char **line, t_tetris *tetris)
 			j++;
 		}
 		i++;
+	}
+	p = tetris->point[0];
+	j = 0;
+	while (j < 4)
+	{
+		tetris->point[j].x -= p.x;
+		tetris->point[j].y -= p.y;
+		j++;
 	}
 }
 
