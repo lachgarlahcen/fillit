@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:46:44 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/10/28 09:12:51 by yez-zain         ###   ########.fr       */
+/*   Updated: 2018/10/29 17:51:19 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,28 @@ void		ft_load_tetris(char **line, t_tetris *tetris)
 {
 	int		i;
 	int		j;
-	t_point	p;
+	t_point	min;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	while (i < 16)
+	min.x = 4;
+	min.y = 4;
+	while (++i < 16)
 	{
 		if (line[i / 4][i % 4] == '#')
 		{
 			tetris->point[j].x = i / 4;
 			tetris->point[j].y = i % 4;
+			min.x = (min.x > tetris->point[j].x) ? tetris->point[j].x : min.x;
+			min.y = (min.y > tetris->point[j].y) ? tetris->point[j].y : min.y;
 			j++;
 		}
-		i++;
 	}
-	p = tetris->point[0];
-	j = 0;
-	while (j < 4)
+	j = -1;
+	while (++j < 4)
 	{
-		tetris->point[j].x -= p.x;
-		tetris->point[j].y -= p.y;
-		j++;
+		tetris->point[j].x -= min.x;
+		tetris->point[j].y -= min.y;
 	}
 }
 
