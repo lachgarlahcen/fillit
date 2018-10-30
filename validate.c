@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:46:44 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/10/29 18:05:11 by yez-zain         ###   ########.fr       */
+/*   Updated: 2018/10/30 08:52:53 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int			ft_read_tetris(const int fd, t_tetris *tetris)
 	char	*line[5];
 	int		ret;
 
-	if (get_next_line(fd, &line[0]) == 0 || ft_strlen(line[0]) != 4)
+	if (get_next_line(fd, &line[0]) <= 0 || ft_strlen(line[0]) != 4)
 		return (-1);
 	i = 0;
 	while (++i < 4)
