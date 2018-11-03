@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:46:44 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/11/02 22:27:50 by llachgar         ###   ########.fr       */
+/*   Updated: 2018/11/03 15:02:21 by llachgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void		ft_load_tetris(char **line, t_tetris *tetris)
 	}
 	tetris->max = add_max(tetris);
 }
-
 
 int			ft_read_tetris(const int fd, t_tetris *tetris)
 {
