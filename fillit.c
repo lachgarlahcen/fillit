@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 t_point		*test_add(t_tetris *list, int size, char **tab, t_point *a)
 {
@@ -46,18 +45,6 @@ void		ft_add_shape(char **tab, t_tetris *list, t_point *a)
 	while (i < 4)
 	{
 		tab[list->point[i].x + a->x][list->point[i].y + a->y] = c;
-		i++;
-	}
-}
-
-void		ft_remove(char **tab, t_tetris *list, t_point *a)
-{
-	int i;
-
-	i = 0;
-	while (i < 4)
-	{
-		tab[list->point[i].x + a->x][list->point[i].y + a->y] = '.';
 		i++;
 	}
 }
@@ -97,4 +84,23 @@ int			fillit(t_tetris *list, char **tab, int size, t_point *x)
 		}
 	}
 	return (0);
+}
+
+void		solve(t_tetris *t)
+{
+	int			fd;
+	char		**tab;
+	t_point		*a;
+
+	a = (t_point*)malloc(sizeof(t_point) * 1);
+	a = init_p(a);
+	fd = gess_bord(list_lenght(t));
+	tab = tab_malloc(fd + 1, fd);
+	ft_init_tab(tab, fd);
+	while (fillit(t, tab, fd, a) == 0)
+	{
+		fd++;
+		a = init_p(a);
+		tab = add_bord(tab, fd);
+	}
 }

@@ -46,5 +46,7 @@ int				list_lenght(t_tetris *list);
 void			solve(t_tetris *t);
 int				fillit(t_tetris *list, char **tab, int size, t_point *a);
 t_point			add_max(t_tetris *list);
+void			ft_remove(char **tab, t_tetris *list, t_point *a);
+t_point			*init_p(t_point *a);
 
 #endif

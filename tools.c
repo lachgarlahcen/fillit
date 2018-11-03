@@ -25,6 +25,18 @@ int			list_lenght(t_tetris *list)
 	return (i);
 }
 
+void		ft_remove(char **tab, t_tetris *list, t_point *a)
+{
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		tab[list->point[i].x + a->x][list->point[i].y + a->y] = '.';
+		i++;
+	}
+}
+
 void		ft_put_shape(char **tab, int size)
 {
 	int i;
@@ -42,25 +54,6 @@ t_point		*init_p(t_point *a)
 	a->x = 0;
 	a->y = 0;
 	return (a);
-}
-
-void		solve(t_tetris *t)
-{
-	int			fd;
-	char		**tab;
-	t_point		*a;
-
-	a = (t_point*)malloc(sizeof(t_point) * 1);
-	a = init_p(a);
-	fd = gess_bord(list_lenght(t));
-	tab = tab_malloc(fd + 1, fd);
-	ft_init_tab(tab, fd);
-	while (fillit(t, tab, fd, a) == 0)
-	{
-		fd++;
-		a = init_p(a);
-		tab = add_bord(tab, fd);
-	}
 }
 
 t_point		add_max(t_tetris *list)

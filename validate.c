@@ -12,35 +12,6 @@
 
 #include "fillit.h"
 
-void		ft_load_tetris(char **line, t_tetris *tetris)
-{
-	int		i;
-	int		j;
-	t_point	min;
-
-	i = -1;
-	j = -1;
-	min.x = 4;
-	min.y = 4;
-	while (++i < 16)
-	{
-		if (line[i / 4][i % 4] == '#')
-		{
-			tetris->point[++j].x = i / 4;
-			tetris->point[j].y = i % 4;
-			min.x = (min.x > tetris->point[j].x) ? tetris->point[j].x : min.x;
-			min.y = (min.y > tetris->point[j].y) ? tetris->point[j].y : min.y;
-		}
-	}
-	j = -1;
-	while (++j < 4)
-	{
-		tetris->point[j].x -= min.x;
-		tetris->point[j].y -= min.y;
-	}
-	tetris->max = add_max(tetris);
-}
-
 int			ft_nb_bloc(char **line, int i, int j)
 {
 	int nb;
@@ -89,6 +60,36 @@ int			ft_is_valide(char **line)
 		return (0);
 	return (1);
 }
+
+void		ft_load_tetris(char **line, t_tetris *tetris)
+{
+	int		i;
+	int		j;
+	t_point	min;
+
+	i = -1;
+	j = -1;
+	min.x = 4;
+	min.y = 4;
+	while (++i < 16)
+	{
+		if (line[i / 4][i % 4] == '#')
+		{
+			tetris->point[++j].x = i / 4;
+			tetris->point[j].y = i % 4;
+			min.x = (min.x > tetris->point[j].x) ? tetris->point[j].x : min.x;
+			min.y = (min.y > tetris->point[j].y) ? tetris->point[j].y : min.y;
+		}
+	}
+	j = -1;
+	while (++j < 4)
+	{
+		tetris->point[j].x -= min.x;
+		tetris->point[j].y -= min.y;
+	}
+	tetris->max = add_max(tetris);
+}
+
 
 int			ft_read_tetris(const int fd, t_tetris *tetris)
 {
