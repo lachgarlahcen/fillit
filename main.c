@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 21:23:43 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/11/03 15:00:41 by llachgar         ###   ########.fr       */
+/*   Updated: 2018/11/03 17:29:34 by llachgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		gess_bord(int len)
 {
 	int bord;
 
-	if (len == 6 || len == 19 || len == 12 || len == 20)
+	if (len == 6 || len == 19 || len == 12 || len == 20 || len == 15)
 		bord = ft_sqrt(len * 4) + 2;
 	else if (len == 4 || len == 1)
 		bord = ft_sqrt(len * 4);
