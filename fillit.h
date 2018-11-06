@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:47:00 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/11/03 00:28:20 by llachgar         ###   ########.fr       */
+/*   Updated: 2018/11/06 14:17:40 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int				fillit(t_tetris *list, char **tab, int size, t_point *a);
 t_point			add_max(t_tetris *list);
 void			ft_remove(char **tab, t_tetris *list, t_point *a);
 t_point			*init_p(t_point *a);
+void			ft_list_remove(t_tetris *list);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:43:20 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/10/10 17:17:39 by yez-zain         ###   ########.fr       */
+/*   Updated: 2018/11/06 14:15:29 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_lstsort(t_list *liste)
 			max_size = l->next->content_size;
 			if (max_size < l->content_size)
 				max_size = l->content_size;
-			if (memcmp(l->content, l->next->content, max_size) > 0)
+			if (ft_memcmp(l->content, l->next->content, max_size) > 0)
 			{
 				ft_lstcontentswap(l, l->next);
 				sorted = 0;
