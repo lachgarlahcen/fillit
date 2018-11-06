@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include "GNL/get_next_line.h"
+# include "get_next_line.h"
 # include "libft/libft.h"
 # include <stdlib.h>
 

@@ -6,7 +6,7 @@
 /*   By: yez-zain <yezzainabi@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 21:23:43 by yez-zain          #+#    #+#             */
-/*   Updated: 2018/11/03 17:29:34 by llachgar         ###   ########.fr       */
+/*   Updated: 2018/11/06 14:15:04 by yez-zain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,14 @@ int		main(int argc, char *argv[])
 		exit(1);
 	}
 	fd = open(argv[1], O_RDONLY);
-	if (!(t = ft_read_all(fd)))
+	if (!(t = ft_read_all(fd)) || list_lenght(t) > 26)
 	{
+		ft_list_remove(t);
 		ft_putendl("error");
 		exit(1);
 	}
 	close(fd);
 	solve(t);
+	ft_list_remove(t);
 	return (0);
 }

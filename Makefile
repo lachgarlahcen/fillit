@@ -12,7 +12,7 @@
 
 NAME = fillit
 
-SRC = validate.c tools.c main.c utilities.c fillit.c GNL/get_next_line.c
+SRC = validate.c tools.c main.c utilities.c fillit.c get_next_line.c
 OBJ = *.o
 LIB = libft/libft.a
 FLAGS = -Wall -Wextra -Werror
