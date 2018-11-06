@@ -43,3 +43,36 @@ void	ft_list_remove(t_tetris *list)
 		t = list;
 	}
 }
+
+int		count_tab_points(char *tab, int size)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (i < size)
+	{
+		if (tab[i] == '.')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int		optimal_check(char **tab, int size, int len)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (i < size)
+	{
+		count += count_tab_points(tab[i], size);
+		i++;
+	}
+	if (count < (len * 4))
+		return (0);
+	return (1);
+}

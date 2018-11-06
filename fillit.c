@@ -72,6 +72,8 @@ int			fillit(t_tetris *list, char **tab, int size, t_point *x)
 		ft_put_shape(tab, size);
 		exit(1);
 	}
+	if (!optimal_check(tab, size, list_lenght(list)))
+		return (0);
 	if ((x = test_add(list, size, tab, x)) != NULL)
 	{
 		ft_add_shape(tab, list, x);
@@ -100,6 +102,7 @@ void		solve(t_tetris *t)
 	while (fillit(t, tab, fd, a) == 0)
 	{
 		fd++;
+		ft_init_tab(tab, fd);
 		a = init_p(a);
 		tab = add_bord(tab, fd);
 	}

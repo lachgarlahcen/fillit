@@ -67,6 +67,12 @@ int		gess_bord(int len)
 		bord = ft_sqrt(len * 4);
 	else
 		bord = ft_sqrt(len * 4) + 1;
+	if (len > 22)
+		return (11);
+	else if (len > 18)
+		return (10);
+	else if (len > 14)
+		return (9);
 	return (bord);
 }
 
